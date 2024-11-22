@@ -9,5 +9,7 @@ class RencanaStudyViewModel {
     private val _krsState = MutableStateFlow(RencanaStudy())
     val krsStateUi: StateFlow<RencanaStudy> = _krsState.asStateFlow()
 
+    fun setMataKuliah(mkPilihan: String) {
 
+    }
 }
