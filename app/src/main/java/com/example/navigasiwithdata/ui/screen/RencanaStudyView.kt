@@ -2,6 +2,7 @@ package com.example.navigasiwithdata.ui.screen
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -16,6 +17,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Notifications
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
+import androidx.compose.material3.RadioButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -34,6 +36,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.navigasiwithdata.R
 import com.example.navigasiwithdata.data.MataKuliah
+import com.example.navigasiwithdata.data.RuangKelas
 import com.example.navigasiwithdata.model.Mahasiswa
 import com.example.navigasiwithdata.ui.widget.DynamicSelectedTextField
 
@@ -76,22 +79,22 @@ fun RencanaStudyView(
 
             )
             Spacer(modifier = Modifier.padding(start = 16.dp))
-            Column (modifier = Modifier.weight(1f)) {
+            Column(modifier = Modifier.weight(1f)) {
 
                 Text(
-                    text =  mahasiswa.nama,
+                    text = mahasiswa.nama,
                     fontWeight = FontWeight.Bold,
                     fontSize = 15.sp,
                     color = Color.White
                 )
                 Text(
-                    text =  mahasiswa.nim,
+                    text = mahasiswa.nim,
                     fontWeight = FontWeight.Light,
                     fontSize = 12.sp,
                     color = Color.White
                 )
             }
-            Box{
+            Box {
                 Icon(
                     imageVector = Icons.Filled.Notifications,
                     contentDescription = null,
@@ -110,7 +113,7 @@ fun RencanaStudyView(
                 )
                 .fillMaxSize()
         ) {
-            Column (
+            Column(
                 modifier = Modifier
                     .fillMaxSize()
                     .padding(16.dp)
@@ -144,6 +147,25 @@ fun RencanaStudyView(
                     fontWeight = FontWeight.Light,
                     fontSize = 12.sp
                 )
+                Spacer(modifier = Modifier.padding(8.dp))
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.SpaceEvenly
+                ) {
+                    RuangKelas.listKelas.forEach { data ->
+                        Row(
+                            verticalAlignment = Alignment.CenterVertically
+                        ) {
+                            RadioButton(
+                                selected = pilihanKelas == data,
+                                onClick = { pilihanKelas = data }
+                            )
+                            Text(data)
+                        }
+                    }
+                }
+                Spacer(modifier = Modifier.padding(8.dp))
+                HorizontalDivider()
                 Spacer(modifier = Modifier.padding(8.dp))
 
             }
