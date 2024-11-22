@@ -1,6 +1,6 @@
 package com.example.navigasiwithdata.model
 
 data class RencanaStudy(
-    val mataKuliah: String = "",
+    val namaMK: String = "",
     val kelas: String = "",
 )
