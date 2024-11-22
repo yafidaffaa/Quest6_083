@@ -43,7 +43,6 @@ import com.example.navigasiwithdata.R
 
 @Composable
 fun MahasiswaFormView(
-    modidifire: Modifier,
     onSubmitButtonClicked: (MutableList<String>) -> Unit,
     onBackButtonClicked: () -> Unit
 ) {

@@ -20,9 +20,10 @@ import androidx.compose.ui.unit.dp
 import com.example.navigasiwithdata.R
 import org.intellij.lang.annotations.JdkConstants.HorizontalAlignment
 
-@Preview(showBackground = true)
 @Composable
-fun SplashView() {
+fun SplashView(
+    onMulaiButton: () -> kotlin.Unit
+) {
     Column(
         modifier = Modifier
             .fillMaxSize()
