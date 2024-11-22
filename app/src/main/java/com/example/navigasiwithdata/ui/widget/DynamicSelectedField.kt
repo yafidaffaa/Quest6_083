@@ -28,7 +28,7 @@ import androidx.compose.ui.unit.dp
 @Composable
 fun DynamicSelectedTextField(
     selectedValue: String,
-    option: List<String>,
+    options: List<String>,
     label: String,
     onValueChangeEvent: (String) -> Unit,
     modifier: Modifier = Modifier
@@ -61,7 +61,7 @@ fun DynamicSelectedTextField(
         ExposedDropdownMenu(
             expanded = expanded,
             onDismissRequest = { expanded = false }) {
-            option.forEach { option: String ->
+            options.forEach { option: String ->
                 DropdownMenuItem(
                     text = { Text(text = option) },
                     onClick = {
