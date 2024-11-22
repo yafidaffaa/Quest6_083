@@ -37,7 +37,9 @@ fun SplashView(
         )
         Spacer(modifier = Modifier.height(16.dp))
         Button(
-            onClick = {}
+            onClick = {
+                onMulaiButton()
+            }
         ) {
             Text("Mulai")
         }

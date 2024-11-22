@@ -12,6 +12,7 @@ import com.example.navigasiwithdata.ui.viewmodel.RencanaStudyViewModel
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import com.example.navigasiwithdata.ui.screen.DetailMahasiswa
 import com.example.navigasiwithdata.ui.screen.MahasiswaFormView
 import com.example.navigasiwithdata.ui.screen.RencanaStudyView
 import com.example.navigasiwithdata.ui.screen.SplashView
@@ -31,6 +32,7 @@ fun MahasiswaApp(
     navController: NavHostController = rememberNavController()
 ) {
     val mahasiswaUiState = mahasiswaViewModel.mahasiswaUiState.collectAsState().value
+    val krsUiState = krsViewModel.krsStateUi.collectAsState().value
     NavHost(
         navController = navController,
         startDestination = Halaman.Splash.name,
@@ -57,9 +59,19 @@ fun MahasiswaApp(
                 mahasiswa = mahasiswaUiState,
                 onSubmitButtonClicked = {
                     krsViewModel.saveDataKRS(it)
+                    navController.navigate(Halaman.Tampil.name)
                 },
                 onBackButtonClicked = {
                     navController.popBackStack()
+                }
+            )
+        }
+        composable(route = Halaman.Tampil.name) {
+            DetailMahasiswa(
+                mahasiswa = mahasiswaUiState,
+                rencanaStudy = krsUiState,
+                onBackButtonClicked = {
+                    navController.navigate(Halaman.Splash.name)
                 }
             )
         }
